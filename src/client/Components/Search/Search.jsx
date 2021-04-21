@@ -140,7 +140,7 @@ const Search = (props) => {
 						})
 					}
 				>
-					Add to meal's menu ff
+					Add to meal's menu
 				</Button>
 			</div>
 		</>
