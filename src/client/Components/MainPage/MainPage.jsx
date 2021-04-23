@@ -6,13 +6,10 @@ import MenuBuilder from "../MenuBuilder/MenuBuilder";
 
 import { Button, TextField } from "@material-ui/core";
 
-const MealsEnum = Object.freeze({ Breakfast: 0, Lunch: 1, Dinner: 2 });
-
 const MainPage = (props) => {
 	const [ingridient, setIngridient] = useState("");
 	const [ingridientInfo, setIngridientInfo] = useState(null);
 	const [amount, setAmount] = useState(0);
-	const [meal, setMeal] = useState(0);
 	const [open, setOpen] = useState(false);
 
 	const handleSearch = () => {
@@ -81,9 +78,6 @@ const MainPage = (props) => {
 			{ingridientInfo && (
 				<MenuBuilder
 					ingridientInfo={ingridientInfo}
-					meal={meal}
-					setMeal={setMeal}
-					MealsEnum={MealsEnum}
 					open={open}
 					setOpen={setOpen}
 				/>

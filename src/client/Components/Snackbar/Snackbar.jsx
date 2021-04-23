@@ -6,11 +6,11 @@ const Snackbar = (props) => {
 	return (
 		<Snackbar
 			open={props.open}
-			autoHideDuration={5000}
+			autoHideDuration={2000}
 			onClose={props.onClose}
 		>
 			<MuiAlert
-				elevation={5}
+				elevation={2}
 				variant="filled"
 				onClose={props.onClose}
 				severity={props.severity}

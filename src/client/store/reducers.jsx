@@ -1,7 +1,8 @@
 import * as actionTypes from "./actions";
+import { MealsEnum } from "../constants";
 
 const initialState = {
-	meal: "Breakfast",
+	meal: MealsEnum.Breakfast,
 	Breakfast: [],
 	Lunch: [],
 	Dinner: [],
@@ -16,33 +17,59 @@ const reducer = (state = initialState, action) => {
 			};
 		case actionTypes.ADD_INGREDIENT:
 			switch (action.data.meal) {
-				case 0:
+				case MealsEnum.Breakfast:
 					return {
 						...state,
-						Breakfast: state.Breakfast.push(
-							action.data.ingridientInfo
-						),
+						Breakfast: [
+							...state.Breakfast,
+							action.data.ingridientInfo,
+						],
 					};
-				case 1:
+				case MealsEnum.Lunch:
 					return {
 						...state,
-						Lunch: state.Lunch.push(action.data.ingridientInfo),
+						Lunch: [...state.Lunch, action.data.ingridientInfo],
 					};
-				case 2:
+				case MealsEnum.Dinner:
 					return {
 						...state,
-						Dinner: state.Dinner.push(action.data.ingridientInfo),
+						Dinner: [...state.Dinner, action.data.ingridientInfo],
 					};
 				default:
 					return state;
 			}
 		case actionTypes.REMOVE_INGREDIENT:
-			return {
-				...state,
-				Breakfast: state.Breakfast.filter(
-					(ing) => ing.id != action.data.id
-				),
-			};
+			switch (action.data.meal) {
+				case MealsEnum.Breakfast:
+					return {
+						...state,
+						Breakfast: [
+							...state.Breakfast.filter(
+								(ing) => ing.id == action.data.id
+							),
+						],
+					};
+				case MealsEnum.Lunch:
+					return {
+						...state,
+						Lunch: [
+							...state.Lunch.filter(
+								(ing) => ing.id == action.data.id
+							),
+						],
+					};
+				case MealsEnum.Dinner:
+					return {
+						...state,
+						Dinner: [
+							...state.Dinner.filter(
+								(ing) => ing.id == action.data.id
+							),
+						],
+					};
+				default:
+					return state;
+			}
 		default:
 			return state;
 	}
