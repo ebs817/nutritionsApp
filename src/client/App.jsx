@@ -1,11 +1,11 @@
 import React from "react";
-import Search from "./Components/Search/Search";
+import MainPage from "./Components/MainPage/MainPage";
 
 const App = () => {
 	return (
 		<div>
-			<h1>Search ingredients</h1>
-			<Search />
+			<h1 style={{ textAlign: "center" }}>Search ingredients</h1>
+			<MainPage />
 		</div>
 	);
 };
